@@ -67,3 +67,13 @@ Kubernetes addresses these limitations, providing a more robust and scalable con
 8. **Persistent Volumes**
    - Provides a way for users to request storage for their Pods.
 
+## Kubernetes Tools Overview
+
+This section provides an overview of different Kubernetes tools categorized based on their purpose.
+
+| Tool Type                        | Purpose                                                             | Examples                                                                  |
+|-----------------------------------|---------------------------------------------------------------------|--------------------------------------------------------------------------|
+| **Kubernetes Cluster Tools**      | Set up and manage Kubernetes clusters.                              | Minikube, Kind, K3s, MicroK8s, Docker Desktop, K0s                       |
+| **Kubernetes Deployment Tools**   | Deploy, scale, and manage applications in a Kubernetes cluster.     | kubectl, Helm, Kustomize, ArgoCD, FluxCD, Jenkins X, Skaffold            |
+
+
