@@ -75,3 +75,35 @@ This section provides an overview of different Kubernetes tools categorized base
 |-----------------------------------|---------------------------------------------------------------------|--------------------------------------------------------------------------|
 | **Kubernetes Cluster Tools**      | Set up and manage Kubernetes clusters.                              | Minikube, Kind, K3s, MicroK8s, Docker Desktop, K0s                       |
 | **Kubernetes Deployment Tools**   | Deploy, scale, and manage applications in a Kubernetes cluster.     | kubectl, Helm, Kustomize, ArgoCD, FluxCD, Jenkins X, Skaffold            |
+
+# Autohealing in Kubernetes  
+
+Autohealing in Kubernetes ensures high availability by automatically detecting and recovering failed pods. This is achieved through:  
+
+## ReplicaSets  
+- Ensures that a specified number of pod replicas are always running.  
+- If a pod crashes, a new one is automatically created to maintain the desired state.  
+- When a Deployment is created, the Kubernetes controller manager ensures that the ReplicaSet maintains the required number of pod replicas.
+
+  # Kubernetes Services and Their Types
+
+Kubernetes services provide a way to expose applications running in pods.
+
+## Types of Services
+
+### 1. ClusterIP (Default)
+- Exposes the service only inside the cluster.
+- This is the default type and is used for internal communication between services.
+
+### 2. NodePort
+- Exposes the service on a static port on each node.
+- Allows external traffic to access the service using `NodeIP:NodePort`.
+
+### 3. LoadBalancer
+- Uses a cloud provider's load balancer to expose the service externally.
+- Provides an external IP address that routes traffic to the service.
+
+### 4. ExternalName
+- Maps a service to an external DNS name.
+- Useful for integrating external services without directly exposing them in Kubernetes.
+
