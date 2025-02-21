@@ -3,7 +3,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
-- [Duild a Dockerimage](#Build a Docker Image)
+- [Build Dockerimage](#Build-a-docker-image)
 - [Start Minikube](#start-minikube)
 - [Deploy a Static Web Application](#deploy-a-static-web-application)
 - [Configure Service to Expose Application](#configure-service-to-expose-application)
