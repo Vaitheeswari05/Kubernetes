@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Introduction](#introduction)
 - [Prerequisites](#prerequisites)
+- [Duild a Dockerimage](#Build a Docker Image)
 - [Start Minikube](#start-minikube)
 - [Deploy a Static Web Application](#deploy-a-static-web-application)
 - [Configure Service to Expose Application](#configure-service-to-expose-application)
@@ -18,12 +19,22 @@ This repository documents the journey of deploying a static web application on K
 - Installed **Minikube**
 - Installed **kubectl**
 - Docker installed for building container images
-- Basic knowledge of Kubernetes
 
+## Build a Docker Image
+Create a **Dockerfile** define the os,working directory,
+build the docker image form dockerfile and push it to docker hub 
+```sh
+docker build -t vaitheeswari/django-app:v1
+docker login
+docker tag vaitheeswari/django-app:v1 vaitheeswari/django-app:v1
+docker push vaitheeswari/django-app:v1
+
+```
 ## Start Minikube
 To start Minikube, use the following command:
 ```sh
-minikube start
+sudo usermod -aG docker $USER && newgrp docker
+minikube start --driver=docker --container-runtime=containerd
 ```
 
 ## Deploy a Static Web Application
@@ -61,7 +72,6 @@ minikube start
    ```sh
    kubectl get pods -o wide
    ```
-
 ## Configure Service to Expose Application
 To expose the application outside the cluster, create a **Service YAML** file (`service.yaml`).
 ```yaml
@@ -162,11 +172,7 @@ Kubernetes ensures pod availability through ReplicaSets.
      ```sh
      sudo iptables -t nat -L -n -v | grep 30007
      ```
-4. **Restart Kubernetes Components**:
-   ```sh
-   sudo systemctl restart docker kubelet
-   ```
-5. **Debug Issues in a Running Pod**:
+4. **Debug Issues in a Running Pod**:
    ```sh
    kubectl exec -it <POD_NAME> -- /bin/sh
    ```
