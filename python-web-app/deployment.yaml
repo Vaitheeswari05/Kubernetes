@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-webapp
+  labels:
+    app: django-webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: django-webapp
+  template:
+    metadata:
+      labels:
+        app: django-webapp
+    spec:
+      containers:
+      - name: django-app
+        image: vaitheeswari/django-app:v1
+        ports:
+        - containerPort: 8000
+
