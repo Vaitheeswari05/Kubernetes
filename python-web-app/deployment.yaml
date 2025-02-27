@@ -15,8 +15,15 @@ spec:
         app: django-webapp
     spec:
       containers:
-      - name: django-app
-        image: vaitheeswari/django-app:v1
-        ports:
-        - containerPort: 8000
+        - name: django-app
+          image: vaitheeswari/django-app:v1
+          volumeMounts:
+            - name: db-connection
+              mountPath: /opt
+          ports:
+            - containerPort: 8000
+      volumes:
+        - name: db-connection
+          configMap:
+            name: django-webapp-cm
 
